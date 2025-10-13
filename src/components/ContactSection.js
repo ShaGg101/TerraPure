@@ -24,7 +24,7 @@ const ContactSection = () => {
   }
   setSubmitted(false);
     try {
-      const resp = await fetch('/send-email', {
+      const resp = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ to_email: email, message: 'Thank you for reaching out to TerraPure! We will contact you as soon as possible.' })
