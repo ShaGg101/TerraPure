@@ -16,11 +16,32 @@ const ContactSection = () => {
   const [email, setEmail] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    alert("Thank you! Your email (" + email + ") has been received. We'll contact you soon.");
-    setEmail("");
+   if (!email) {
+    alert('Please enter your email address.');
+    return;
+  }
+  setSubmitted(false);
+    try {
+      const resp = await fetch('/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ to_email: email, message: 'Thank you for reaching out to TerraPure! We will contact you as soon as possible.' })
+      });
+      const data = await resp.json();
+      if (resp.ok) {
+        setSubmitted(true);
+        alert('Thank you! A confirmation email has been sent to ' + email);
+      } else {
+        console.error(data);
+        alert('Failed to send email. Please try again later.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to send email. Please try again later.');
+    }
+    setEmail('');
   };
 
   return (
