@@ -26,6 +26,24 @@ const cartReducer = (state, action) => {
         ...state,
         items: state.items.filter(item => item.size !== action.payload)
       };
+    case 'INCREASE_QUANTITY':
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.size === action.payload
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      };
+    case 'DECREASE_QUANTITY':
+      return {
+        ...state,
+        items: state.items.map(item =>
+          item.size === action.payload
+            ? { ...item, quantity: Math.max(1, item.quantity - 1) }
+            : item
+        )
+      };
     case 'TOGGLE_CART':
       return {
         ...state,
@@ -62,6 +80,14 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: 'REMOVE_ITEM', payload: size });
   };
 
+  const increaseQuantity = (size) => {
+    dispatch({ type: 'INCREASE_QUANTITY', payload: size });
+  };
+
+  const decreaseQuantity = (size) => {
+    dispatch({ type: 'DECREASE_QUANTITY', payload: size });
+  };
+
   const toggleCart = () => {
     dispatch({ type: 'TOGGLE_CART' });
   };
@@ -87,6 +113,8 @@ export const CartProvider = ({ children }) => {
     isOpen: state.isOpen,
     addToCart,
     removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
     toggleCart,
     closeCart,
     clearCart,

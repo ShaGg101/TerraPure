@@ -3,7 +3,7 @@ import { useCart } from '../hooks/useCart';
 import Modal from './Modal';
 
 const CartModal = () => {
-  const { items, isOpen, removeFromCart, closeCart, getTotalPrice, clearCart } = useCart();
+  const { items, isOpen, removeFromCart, increaseQuantity, decreaseQuantity, closeCart, getTotalPrice, clearCart } = useCart();
   const [showCheckoutModal, setShowCheckoutModal] = React.useState(false);
   const [paymentAmount, setPaymentAmount] = React.useState('');
   const [paymentError, setPaymentError] = React.useState('');
@@ -66,21 +66,47 @@ const CartModal = () => {
               </div>
             ) : (
               items.map((item, index) => (
-                <div key={index} className="flex justify-between items-center p-2.5 sm:p-3 bg-gray-50 rounded-lg">
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-sm sm:text-base truncate">Wilkins {item.size}</div>
-                    <div className="text-xs sm:text-sm text-gray-600">₱{item.price} × {item.quantity}</div>
-                  </div>
-                  <div className="flex items-center space-x-2 sm:space-x-3 ml-2">
-                    <span className="font-semibold text-sm sm:text-base whitespace-nowrap">₱{item.price * item.quantity}</span>
+                <div key={index} className="bg-gray-50 rounded-lg p-2.5 sm:p-3">
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold text-sm sm:text-base truncate">Wilkins {item.size}</div>
+                      <div className="text-xs sm:text-sm text-gray-600">₱{item.price} each</div>
+                    </div>
                     <button 
                       onClick={() => removeFromCart(item.size)} 
-                      className="text-red-500 hover:text-red-700 p-1 flex-shrink-0"
+                      className="text-red-500 hover:text-red-700 p-1 flex-shrink-0 ml-2"
+                      aria-label="Remove item"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
                       </svg>
                     </button>
+                  </div>
+                  
+                  {/* Quantity Controls */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <button
+                        onClick={() => decreaseQuantity(item.size)}
+                        className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center bg-white hover:bg-gray-100 border border-gray-300 text-gray-700 rounded-md font-semibold transition-colors text-base sm:text-lg"
+                        aria-label="Decrease quantity"
+                      >
+                        −
+                      </button>
+                      <span className="text-sm sm:text-base font-semibold text-gray-900 min-w-[1.5rem] text-center">
+                        {item.quantity}
+                      </span>
+                      <button
+                        onClick={() => increaseQuantity(item.size)}
+                        className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center bg-white hover:bg-gray-100 border border-gray-300 text-gray-700 rounded-md font-semibold transition-colors text-base sm:text-lg"
+                        aria-label="Increase quantity"
+                      >
+                        +
+                      </button>
+                    </div>
+                    <span className="font-bold text-sm sm:text-base text-cyan-600 whitespace-nowrap">
+                      ₱{item.price * item.quantity}
+                    </span>
                   </div>
                 </div>
               ))
