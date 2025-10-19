@@ -15,6 +15,7 @@ const ContactSection = () => {
   ];
 
   const [email, setEmail] = React.useState("");
+  const [submittedEmail, setSubmittedEmail] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
   const [showErrorModal, setShowErrorModal] = React.useState(false);
   const [showSuccessModal, setShowSuccessModal] = React.useState(false);
@@ -36,15 +37,10 @@ const ContactSection = () => {
       });
       const data = await resp.json();
       if (resp.ok) {
+        setSubmittedEmail(email); // Store the email before clearing
         setSubmitted(true);
         setShowSuccessModal(true);
-        const submittedEmail = email;
-        setEmail('');
-        setTimeout(() => {
-          if (submittedEmail === email) {
-            setEmail('');
-          }
-        }, 100);
+        setEmail(''); // Clear the input field
       } else {
         console.error(data);
         setErrorMessage('Failed to send email. Please try again later.');
@@ -124,19 +120,24 @@ const ContactSection = () => {
     />
     <Modal
       isOpen={showSuccessModal}
-      onClose={() => setShowSuccessModal(false)}
-      title="Success!"
-      message={`Thank you for connecting with TerraPure!
+      onClose={() => {
+        setShowSuccessModal(false);
+        setSubmittedEmail(''); // Clear stored email after modal closes
+      }}
+      title="Welcome to TerraPure!"
+      message={`Thank you for connecting with us!
 
-📧 We've sent a confirmation to:
-   ${email}
+📧 A confirmation has been sent to:
+   ${submittedEmail}
 
-What's Next:
-• Check your inbox for our welcome message
-• Add us to your contacts
-• Look out for hydration tips and updates
+Next Steps:
+   • Check your inbox for our welcome email
+   • Add hello@terrapure.ph to contacts
+   • Watch for hydration tips and updates
+   • Start your hydration journey with us
 
-💧 Welcome to the TerraPure family!`}
+Welcome to the TerraPure family!
+   Your path to better hydration begins now.`}
     />
     </>
   );
