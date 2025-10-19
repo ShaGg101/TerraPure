@@ -83,7 +83,6 @@ const CartModal = () => {
                     </button>
                   </div>
                   
-                  {/* Quantity Controls */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2 sm:gap-3">
                       <button
