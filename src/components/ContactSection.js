@@ -37,10 +37,11 @@ const ContactSection = () => {
       });
       const data = await resp.json();
       if (resp.ok) {
-        setSubmittedEmail(email); // Store the email before clearing
+        const confirmedEmail = email; // Store email in local variable
+        setSubmittedEmail(confirmedEmail); // Set the submitted email
         setSubmitted(true);
         setShowSuccessModal(true);
-        setEmail(''); // Clear the input field
+        setEmail(''); // Clear the input field only once
       } else {
         console.error(data);
         setErrorMessage('Failed to send email. Please try again later.');
@@ -51,7 +52,6 @@ const ContactSection = () => {
       setErrorMessage('Failed to send email. Please try again later.');
       setShowErrorModal(true);
     }
-    setEmail('');
   };
 
   return (
@@ -122,21 +122,21 @@ const ContactSection = () => {
       isOpen={showSuccessModal}
       onClose={() => {
         setShowSuccessModal(false);
-        setSubmittedEmail(''); // Clear stored email after modal closes
+        setSubmitted(false);
       }}
-      title="Welcome to TerraPure!"
-      message={`Thank you for connecting with us!
+      title="✨ Welcome to TerraPure!"
+      message={`🎉 Thank you for connecting with us!
 
 📧 A confirmation has been sent to:
-   ${submittedEmail}
+   ${submittedEmail || 'your email'}
 
-Next Steps:
+📌 Next Steps:
    • Check your inbox for our welcome email
    • Add hello@terrapure.ph to contacts
    • Watch for hydration tips and updates
    • Start your hydration journey with us
 
-Welcome to the TerraPure family!
+💧 Welcome to the TerraPure family!
    Your path to better hydration begins now.`}
     />
     </>
