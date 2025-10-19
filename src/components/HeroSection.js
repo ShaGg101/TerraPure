@@ -16,27 +16,32 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="gradient-bg pt-20 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="text-white">
-            <h1 className="text-5xl font-bold mb-6">
-              Hydrate Better.<br />Live Healthier.
-            </h1>
-            <p className="text-xl mb-8 text-cyan-100">
+    <section id="home" className="gradient-bg min-h-screen flex items-center pt-24 pb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="text-white space-y-8">
+            <div className="relative">
+              <div className="absolute -top-8 -left-4 w-24 h-24 bg-cyan-400 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+              <div className="absolute -bottom-8 -right-4 w-32 h-32 bg-blue-400 rounded-full filter blur-3xl opacity-20 animate-pulse delay-700"></div>
+              <h1 className="text-6xl lg:text-7xl font-bold leading-tight mb-4">
+                Hydrate <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300">Better.</span><br />
+                Live <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300">Healthier.</span>
+              </h1>
+            </div>
+            <p className="text-2xl text-cyan-100 leading-relaxed">
               Join thousands of Filipinos choosing pure, safe hydration with Wilkins Distilled Water. 
-              Your health starts with every drop.
+              <span className="block mt-2 font-light">Your health starts with every drop.</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6 pt-4">
               <button 
                 onClick={scrollToProducts}
-                className="bg-white text-cyan-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                className="bg-white text-cyan-600 px-10 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
               >
                 Shop Wilkins Now
               </button>
               <button 
                 onClick={startChallenge}
-                className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-cyan-600 transition-colors"
+                className="border-2 border-white text-white px-10 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-cyan-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
               >
                 Start 7-Day Challenge
               </button>

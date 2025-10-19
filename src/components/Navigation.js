@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../hooks/useCart';
+import useActiveSection from '../hooks/useActiveSection';
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { getTotalItems, toggleCart } = useCart();
+  const activeSection = useActiveSection();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,23 +39,83 @@ const Navigation = () => {
           </div>
           
           <div className="hidden md:flex space-x-8">
-            <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-cyan-600 transition-colors">
+            <button 
+              onClick={() => scrollToSection('home')} 
+              className={`transition-colors relative ${
+                activeSection === 'home' 
+                  ? 'text-cyan-600 font-semibold' 
+                  : 'text-gray-700 hover:text-cyan-600'
+              }`}
+            >
               Home
+              {activeSection === 'home' && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-600 transform scale-x-100"></span>
+              )}
             </button>
-            <button onClick={() => scrollToSection('benefits')} className="text-gray-700 hover:text-cyan-600 transition-colors">
+            <button 
+              onClick={() => scrollToSection('benefits')} 
+              className={`transition-colors relative ${
+                activeSection === 'benefits' 
+                  ? 'text-cyan-600 font-semibold' 
+                  : 'text-gray-700 hover:text-cyan-600'
+              }`}
+            >
               Health Benefits
+              {activeSection === 'benefits' && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-600 transform scale-x-100"></span>
+              )}
             </button>
-            <button onClick={() => scrollToSection('wilkins')} className="text-gray-700 hover:text-cyan-600 transition-colors">
+            <button 
+              onClick={() => scrollToSection('wilkins')} 
+              className={`transition-colors relative ${
+                activeSection === 'wilkins' 
+                  ? 'text-cyan-600 font-semibold' 
+                  : 'text-gray-700 hover:text-cyan-600'
+              }`}
+            >
               Why Wilkins
+              {activeSection === 'wilkins' && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-600 transform scale-x-100"></span>
+              )}
             </button>
-            <button onClick={() => scrollToSection('products')} className="text-gray-700 hover:text-cyan-600 transition-colors">
+            <button 
+              onClick={() => scrollToSection('products')} 
+              className={`transition-colors relative ${
+                activeSection === 'products' 
+                  ? 'text-cyan-600 font-semibold' 
+                  : 'text-gray-700 hover:text-cyan-600'
+              }`}
+            >
               Shop Now
+              {activeSection === 'products' && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-600 transform scale-x-100"></span>
+              )}
             </button>
-            <button onClick={() => scrollToSection('challenge')} className="text-gray-700 hover:text-cyan-600 transition-colors">
+            <button 
+              onClick={() => scrollToSection('challenge')} 
+              className={`transition-colors relative ${
+                activeSection === 'challenge' 
+                  ? 'text-cyan-600 font-semibold' 
+                  : 'text-gray-700 hover:text-cyan-600'
+              }`}
+            >
               7-Day Challenge
+              {activeSection === 'challenge' && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-600 transform scale-x-100"></span>
+              )}
             </button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-cyan-600 transition-colors">
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className={`transition-colors relative ${
+                activeSection === 'contact' 
+                  ? 'text-cyan-600 font-semibold' 
+                  : 'text-gray-700 hover:text-cyan-600'
+              }`}
+            >
               Contact
+              {activeSection === 'contact' && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-600 transform scale-x-100"></span>
+              )}
             </button>
           </div>
           
@@ -91,22 +153,64 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-4 py-2 space-y-1">
-            <button onClick={() => scrollToSection('home')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-gray-50 rounded-md transition-colors">
+            <button 
+              onClick={() => scrollToSection('home')} 
+              className={`block w-full text-left px-3 py-2 rounded-md transition-colors ${
+                activeSection === 'home'
+                  ? 'text-cyan-600 font-semibold bg-cyan-50'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
               Home
             </button>
-            <button onClick={() => scrollToSection('benefits')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-gray-50 rounded-md transition-colors">
+            <button 
+              onClick={() => scrollToSection('benefits')} 
+              className={`block w-full text-left px-3 py-2 rounded-md transition-colors ${
+                activeSection === 'benefits'
+                  ? 'text-cyan-600 font-semibold bg-cyan-50'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
               Health Benefits
             </button>
-            <button onClick={() => scrollToSection('wilkins')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-gray-50 rounded-md transition-colors">
+            <button 
+              onClick={() => scrollToSection('wilkins')} 
+              className={`block w-full text-left px-3 py-2 rounded-md transition-colors ${
+                activeSection === 'wilkins'
+                  ? 'text-cyan-600 font-semibold bg-cyan-50'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
               Why Wilkins
             </button>
-            <button onClick={() => scrollToSection('products')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-gray-50 rounded-md transition-colors">
+            <button 
+              onClick={() => scrollToSection('products')} 
+              className={`block w-full text-left px-3 py-2 rounded-md transition-colors ${
+                activeSection === 'products'
+                  ? 'text-cyan-600 font-semibold bg-cyan-50'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
               Shop Now
             </button>
-            <button onClick={() => scrollToSection('challenge')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-gray-50 rounded-md transition-colors">
+            <button 
+              onClick={() => scrollToSection('challenge')} 
+              className={`block w-full text-left px-3 py-2 rounded-md transition-colors ${
+                activeSection === 'challenge'
+                  ? 'text-cyan-600 font-semibold bg-cyan-50'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
               7-Day Challenge
             </button>
-            <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-3 py-2 text-gray-700 hover:text-cyan-600 hover:bg-gray-50 rounded-md transition-colors">
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className={`block w-full text-left px-3 py-2 rounded-md transition-colors ${
+                activeSection === 'contact'
+                  ? 'text-cyan-600 font-semibold bg-cyan-50'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
               Contact
             </button>
           </div>
