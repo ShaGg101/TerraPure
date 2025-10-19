@@ -32,22 +32,23 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 overflow-x-hidden ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md' : 'bg-white/95'
       }`}
+      style={{ overflowX: 'hidden' }}
     >
-      {/* Reduced nav width & padding */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Navbar Header */}
         <div className="flex justify-between items-center h-16">
-          {/* LOGO */}
-          <div className="flex items-center">
+          {/* Logo + tagline */}
+          <div className="flex items-center space-x-2">
             <div className="text-2xl font-bold text-cyan-600">TerraPure</div>
-            <div className="ml-2 text-xs sm:text-sm text-gray-600 hidden sm:block">
+            <div className="text-xs sm:text-sm text-gray-600 hidden sm:block">
               Hydrate Better. Live Healthier.
             </div>
           </div>
 
-          {/* DESKTOP MENU */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-5 lg:space-x-7">
             {['home', 'benefits', 'wilkins', 'products', 'challenge', 'contact'].map((section) => (
               <button
@@ -77,9 +78,9 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* ICONS */}
+          {/* Cart + Hamburger */}
           <div className="flex items-center space-x-4 sm:space-x-5 mr-2 sm:mr-4 md:mr-6">
-            {/* CART ICON */}
+            {/* Cart Button */}
             <button
               onClick={toggleCart}
               aria-label="Open Cart"
@@ -105,11 +106,11 @@ const Navigation = () => {
               )}
             </button>
 
-            {/* HAMBURGER ICON */}
+            {/* Hamburger Menu */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle Menu"
-              className="md:hidden text-gray-700 p-2 rounded-full hover:bg-gray-100"
+              className="md:hidden text-gray-700 p-2 rounded-full hover:bg-gray-100 transition"
             >
               {isMobileMenuOpen ? (
                 <svg
@@ -145,38 +146,36 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* Mobile Dropdown Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
+        className={`md:hidden transition-all duration-300 ease-in-out bg-white border-t border-gray-200 shadow-sm overflow-hidden ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="bg-white border-t border-gray-200 shadow-sm">
-          <div className="px-4 py-3 space-y-1">
-            {['home', 'benefits', 'wilkins', 'products', 'challenge', 'contact'].map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`block w-full text-left px-4 py-2 rounded-md text-sm transition-colors ${
-                  activeSection === section
-                    ? 'text-cyan-600 font-semibold bg-cyan-50'
-                    : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
-                }`}
-              >
-                {section === 'home'
-                  ? 'Home'
-                  : section === 'benefits'
-                  ? 'Health Benefits'
-                  : section === 'wilkins'
-                  ? 'Why Wilkins'
-                  : section === 'products'
-                  ? 'Shop Now'
-                  : section === 'challenge'
-                  ? '7-Day Challenge'
-                  : 'Contact'}
-              </button>
-            ))}
-          </div>
+        <div className="px-3 sm:px-4 py-2 space-y-1">
+          {['home', 'benefits', 'wilkins', 'products', 'challenge', 'contact'].map((section) => (
+            <button
+              key={section}
+              onClick={() => scrollToSection(section)}
+              className={`block w-full text-left px-3 sm:px-4 py-2.5 rounded-md text-sm sm:text-base transition-colors ${
+                activeSection === section
+                  ? 'text-cyan-600 font-semibold bg-cyan-50'
+                  : 'text-gray-700 hover:text-cyan-600 hover:bg-gray-50'
+              }`}
+            >
+              {section === 'home'
+                ? 'Home'
+                : section === 'benefits'
+                ? 'Health Benefits'
+                : section === 'wilkins'
+                ? 'Why Wilkins'
+                : section === 'products'
+                ? 'Shop Now'
+                : section === 'challenge'
+                ? '7-Day Challenge'
+                : 'Contact'}
+            </button>
+          ))}
         </div>
       </div>
     </nav>

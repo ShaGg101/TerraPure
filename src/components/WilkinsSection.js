@@ -32,37 +32,37 @@ const WilkinsSection = () => {
   ];
 
   return (
-    <section id="wilkins" className="py-16 bg-gray-50">
+    <section id="wilkins" className="py-12 sm:py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose Wilkins?</h2>
-            <div className="space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-5 sm:mb-6">Why Choose Wilkins?</h2>
+            <div className="space-y-5 sm:space-y-6">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start">
-                  <div className="bg-cyan-100 p-2 rounded-lg mr-4">
+                  <div className="bg-cyan-100 p-2 rounded-lg mr-3 sm:mr-4 flex-shrink-0">
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900">{feature.title}</h3>
+                    <p className="text-sm sm:text-base text-gray-600">{feature.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
           
-          <div className="text-center">
-            <div className="bg-white p-8 rounded-2xl shadow-lg">
+          <div className="text-center mt-8 md:mt-0">
+            <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
               <div className="relative mb-4 flex items-center justify-center group">
-                <div className="absolute w-16 h-16 bg-cyan-300 rounded-full opacity-50 scale-0 group-hover:scale-100 group-hover:animate-ping transition-transform duration-300"></div>
-                <div className="text-6xl relative z-10">💧</div>
+                <div className="absolute w-12 h-12 sm:w-16 sm:h-16 bg-cyan-300 rounded-full opacity-50 scale-0 group-hover:scale-100 group-hover:animate-ping transition-transform duration-300"></div>
+                <div className="text-5xl sm:text-6xl relative z-10">💧</div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Wilkins Distilled Water</h3>
-              <p className="text-gray-600 mb-6">Pure. Safe. Trusted.</p>
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-4 rounded-lg">
-                <div className="text-sm">Available in</div>
-                <div className="font-bold">350ml • 500ml • 1L • 6L</div>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Wilkins Distilled Water</h3>
+              <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">Pure. Safe. Trusted.</p>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-3 sm:p-4 rounded-lg">
+                <div className="text-xs sm:text-sm">Available in</div>
+                <div className="text-sm sm:text-base font-bold">350ml • 500ml • 1L • 6L</div>
               </div>
             </div>
           </div>

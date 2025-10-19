@@ -56,19 +56,19 @@ const ContactSection = () => {
 
   return (
     <>
-    <section id="contact" className="py-16 bg-white">
+    <section id="contact" className="py-12 sm:py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
           Ready to Start Your Hydration Journey?
         </h2>
-        <p className="text-xl text-gray-600 mb-8">
+        <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">
           Join thousands of Filipinos choosing healthier hydration
         </p>
-        <div className="bg-gradient-to-r from-cyan-50 to-blue-50 p-8 rounded-2xl mb-8">
-          <div className="grid md:grid-cols-2 gap-8">
+        <div className="bg-gradient-to-r from-cyan-50 to-blue-50 p-6 sm:p-8 rounded-2xl mb-6 sm:mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <div className="text-left">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Get Started Today</h3>
-              <div className="space-y-3 text-gray-600">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Get Started Today</h3>
+              <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-600">
                 {getStartedItems.map((item, index) => (
                   <div key={index} className="flex items-center">
                     <span className="text-cyan-600 mr-2">✓</span>
@@ -78,8 +78,8 @@ const ContactSection = () => {
               </div>
             </div>
             <div className="text-left">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Connect With Us</h3>
-              <div className="space-y-3 text-gray-600">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">Connect With Us</h3>
+              <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-600">
                 {contactInfo.map((info, index) => (
                   <div key={index}>{info}</div>
                 ))}
@@ -87,21 +87,21 @@ const ContactSection = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-lg mx-auto bg-white p-6 rounded-xl shadow-md border border-gray-100">
-          <h3 className="text-2xl font-bold text-gray-900 mb-2">Send Us Your Email</h3>
-          <p className="text-gray-600 mb-4">Want updates or have questions? Enter your email and we'll reach out!</p>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+        <div className="max-w-lg mx-auto bg-white p-5 sm:p-6 rounded-xl shadow-md border border-gray-100">
+          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Send Us Your Email</h3>
+          <p className="text-sm sm:text-base text-gray-600 mb-4">Want updates or have questions? Enter your email and we'll reach out!</p>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center justify-center">
             <input
               type="email"
               required
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="Your email address"
-              className="flex-1 px-4 py-3 rounded-lg border border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-gray-900"
+              className="flex-1 w-full px-4 py-2.5 sm:py-3 rounded-lg border border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-gray-900 text-sm sm:text-base"
             />
             <button
               type="submit"
-              className="bg-cyan-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-cyan-700 transition-colors"
+              className="bg-cyan-600 text-white px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-cyan-700 transition-colors w-full sm:w-auto"
             >
               Send
             </button>

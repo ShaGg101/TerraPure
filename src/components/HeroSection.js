@@ -16,15 +16,15 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="gradient-bg min-h-screen flex items-center pt-24 pb-20">
+    <section id="home" className="gradient-bg min-h-screen flex items-center pt-20 pb-16 sm:pt-24 sm:pb-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
  
-          <div className="text-white space-y-8">
+          <div className="text-white space-y-6 sm:space-y-8">
             <div className="relative">
-              <div className="absolute -top-8 -left-4 w-24 h-24 bg-cyan-400 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
-              <div className="absolute -bottom-8 -right-4 w-32 h-32 bg-blue-400 rounded-full filter blur-3xl opacity-20 animate-pulse delay-700"></div>
-              <h1 className="text-6xl lg:text-7xl font-bold leading-tight mb-4">
+              <div className="absolute -top-8 -left-4 w-20 h-20 sm:w-24 sm:h-24 bg-cyan-400 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+              <div className="absolute -bottom-8 -right-4 w-24 h-24 sm:w-32 sm:h-32 bg-blue-400 rounded-full filter blur-3xl opacity-20 animate-pulse delay-700"></div>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
                 Hydrate{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-blue-300">
                   Better.
@@ -36,30 +36,30 @@ const HeroSection = () => {
                 </span>
               </h1>
             </div>
-            <p className="text-2xl text-cyan-100 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl text-cyan-100 leading-relaxed">
               Join thousands of Filipinos choosing pure, safe hydration with Wilkins Distilled Water.{' '}
               <span className="block mt-2 font-light">Your health starts with every drop.</span>
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-4">
               <button
                 onClick={scrollToProducts}
-                className="bg-white text-cyan-600 px-10 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                className="bg-white text-cyan-600 px-8 sm:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 w-full sm:w-auto"
               >
                 Shop Wilkins Now
               </button>
               <button
                 onClick={startChallenge}
-                className="border-2 border-white text-white px-10 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-cyan-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                className="border-2 border-white text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-white hover:text-cyan-600 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 w-full sm:w-auto"
               >
                 Start 7-Day Challenge
               </button>
             </div>
           </div>
 
-          <div className="relative scale-125 md:scale-150">
+          <div className="relative flex items-center justify-center mt-8 md:mt-0 scale-100 sm:scale-110 md:scale-125 lg:scale-150">
             <div className="water-animation">
               <svg
-                className="w-64 h-64 sm:w-80 sm:h-80 md:w-[28rem] md:h-[28rem] mx-auto purification-glow"
+                className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-[28rem] lg:h-[28rem] mx-auto purification-glow"
                 viewBox="0 0 200 200"
                 fill="none"
               >
