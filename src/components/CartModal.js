@@ -5,15 +5,41 @@ import Modal from './Modal';
 const CartModal = () => {
   const { items, isOpen, removeFromCart, closeCart, getTotalPrice, clearCart } = useCart();
   const [showCheckoutModal, setShowCheckoutModal] = React.useState(false);
+  const [paymentAmount, setPaymentAmount] = React.useState('');
+  const [paymentError, setPaymentError] = React.useState('');
+  const [showSuccessModal, setShowSuccessModal] = React.useState(false);
+  const [change, setChange] = React.useState(0);
 
   const checkout = () => {
     if (items.length === 0) return;
+    const amount = parseFloat(paymentAmount);
+    const total = getTotalPrice();
+    
+    if (!paymentAmount || isNaN(amount)) {
+      setPaymentError('Please enter a valid payment amount');
+      return;
+    }
+    
+    if (amount < total) {
+      setPaymentError(`Payment amount must be at least ₱${total}`);
+      return;
+    }
+    
+    setChange(amount - total);
+    setPaymentError('');
     setShowCheckoutModal(true);
   };
 
   const handleCheckoutConfirm = () => {
-    clearCart();
-    closeCart();
+    setShowCheckoutModal(false);
+    setShowSuccessModal(true);
+    setTimeout(() => {
+      setShowSuccessModal(false);
+      clearCart();
+      closeCart();
+      setPaymentAmount('');
+      setChange(0);
+    }, 3000);
   };
 
   if (!isOpen) return null;
@@ -67,6 +93,25 @@ const CartModal = () => {
                 <span className="text-lg font-semibold">Total:</span>
                 <span className="text-2xl font-bold text-cyan-600">₱{getTotalPrice()}</span>
               </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Enter Payment Amount
+                </label>
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">₱</span>
+                  <input
+                    type="number"
+                    value={paymentAmount}
+                    onChange={(e) => setPaymentAmount(e.target.value)}
+                    className="w-full pl-8 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-cyan-500 focus:border-cyan-500"
+                    placeholder="Enter amount"
+                    min={getTotalPrice()}
+                  />
+                </div>
+                {paymentError && (
+                  <p className="mt-1 text-sm text-red-600">{paymentError}</p>
+                )}
+              </div>
               <button 
                 onClick={checkout}
                 className="w-full bg-cyan-600 text-white py-3 rounded-lg font-semibold hover:bg-cyan-700 transition-colors"
@@ -81,10 +126,34 @@ const CartModal = () => {
     <Modal
       isOpen={showCheckoutModal}
       onClose={() => setShowCheckoutModal(false)}
-      title="Checkout Summary"
-      message={`Items: ${items.map(item => `${item.quantity}x Wilkins ${item.size}`).join(', ')}\nTotal: ₱${getTotalPrice()}\n\nThis is a demo checkout. In a real store, you would proceed to payment and delivery options.\n\nThank you for choosing Wilkins!`}
+      title=" Checkout Summary"
+      message={`Order Details:
+${items.map(item => `• ${item.quantity}x Wilkins ${item.size}`).join('\n')}
+
+Payment Summary:
+• Total Amount: ₱${getTotalPrice()}
+• Payment: ₱${paymentAmount}
+• Change: ₱${change.toFixed(2)}
+
+Confirm your order to proceed with payment.`}
       primaryAction={handleCheckoutConfirm}
-      primaryActionText="Complete Order"
+      primaryActionText="Confirm Order"
+    />
+    <Modal
+      isOpen={showSuccessModal}
+      onClose={() => setShowSuccessModal(false)}
+      title="✅ Order Successful!"
+      message={`Thank you for your purchase!
+
+Payment Details:
+• Amount Paid: ₱${paymentAmount}
+• Total Bill: ₱${getTotalPrice()}
+• Change: ₱${change.toFixed(2)}
+
+Your order will be delivered within 24 hours.
+We'll send you updates via SMS.
+
+Thank you for choosing TerraPure!`}
     />
     </>
   );

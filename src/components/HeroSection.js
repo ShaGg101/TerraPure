@@ -108,29 +108,29 @@ const HeroSection = () => {
         isOpen={showChallengeModal}
         onClose={() => setShowChallengeModal(false)}
         title="Welcome to the Challenge!"
-        message={`🎉  Congratulations on starting your wellness journey!
+        message={`Congratulations on starting your wellness journey!
 
-�  Your 7-Day Challenge Details:
+Your 7-Day Challenge Details:
 
-    💧  Daily Goals:
+    Daily Goals:
        •  Drink 8 glasses of water
        •  Reach 2L daily target
        •  Track your progress
 
-    🎯  Program Benefits:
-       •  ✨  Daily motivation tips
-       •  �  Reminder notifications
-       •  👥  Community support
-       •  🏆  Achievement badges
+    Program Benefits:
+       •  Daily motivation tips
+       •  Reminder notifications
+       •  Community support
+       •  Achievement badges
 
-    ⭐  Getting Started:
+    Getting Started:
        •  Begin tomorrow morning
        •  Set regular reminders
        •  Update progress daily
 
-💪  You've got this! Every drop counts towards a healthier you.
+You've got this! Every drop counts towards a healthier you.
 
-🌟  Welcome to your hydration journey with Wilkins!`}
+Welcome to your hydration journey with Wilkins!`}
       />
     </section>
   );

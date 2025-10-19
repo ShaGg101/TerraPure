@@ -38,6 +38,13 @@ const ContactSection = () => {
       if (resp.ok) {
         setSubmitted(true);
         setShowSuccessModal(true);
+        const submittedEmail = email;
+        setEmail('');
+        setTimeout(() => {
+          if (submittedEmail === email) {
+            setEmail('');
+          }
+        }, 100);
       } else {
         console.error(data);
         setErrorMessage('Failed to send email. Please try again later.');
@@ -118,8 +125,18 @@ const ContactSection = () => {
     <Modal
       isOpen={showSuccessModal}
       onClose={() => setShowSuccessModal(false)}
-      title="Success"
-      message={`Thank you! A confirmation email has been sent to ${email}`}
+      title="Success!"
+      message={`Thank you for connecting with TerraPure!
+
+📧 We've sent a confirmation to:
+   ${email}
+
+What's Next:
+• Check your inbox for our welcome message
+• Add us to your contacts
+• Look out for hydration tips and updates
+
+💧 Welcome to the TerraPure family!`}
     />
     </>
   );

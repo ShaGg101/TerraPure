@@ -20,7 +20,7 @@ const Footer = () => {
     'Store Locator'
   ];
 
-  const socialButtons = ['📘', '📷', '🐦'];// change
+  const socialButtons = ['📘', '📷', '🐦'];
 
   return (
     <footer className="bg-gray-900 text-white py-12">

@@ -156,7 +156,7 @@ Click the shopping cart icon above to:
 📞 Phone: (02) 8123-4567
 📱 WhatsApp: +63 917 123 4567
 
-⏱️ Our team will contact you within 24 hours with:
+Our team will contact you within 24 hours with:
 ✓ Custom pricing quote
 ✓ Delivery schedule
 ✓ Special bulk discounts"
