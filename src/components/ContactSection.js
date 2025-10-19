@@ -134,7 +134,7 @@ Next Steps:
    • Check your inbox for our welcome email
    • Watch for hydration tips and updates
    • Start your hydration journey with us
-
+        
 Welcome to the TerraPure family!
    Your path to better hydration begins now.`}
     />
