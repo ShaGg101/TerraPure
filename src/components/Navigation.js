@@ -38,9 +38,9 @@ const Navigation = () => {
       style={{ overflowX: 'hidden' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Navbar Header */}
+
         <div className="flex justify-between items-center h-16">
-          {/* Logo + tagline */}
+
           <div className="flex items-center space-x-2">
             <div className="text-2xl font-bold text-cyan-600">TerraPure</div>
             <div className="text-xs sm:text-sm text-gray-600 hidden sm:block">
@@ -48,7 +48,7 @@ const Navigation = () => {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
+
           <div className="hidden md:flex space-x-5 lg:space-x-7">
             {['home', 'benefits', 'wilkins', 'products', 'challenge', 'contact'].map((section) => (
               <button
@@ -78,9 +78,9 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Cart + Hamburger */}
+
           <div className="flex items-center space-x-4 sm:space-x-5 mr-2 sm:mr-4 md:mr-6">
-            {/* Cart Button */}
+
             <button
               onClick={toggleCart}
               aria-label="Open Cart"
@@ -106,7 +106,7 @@ const Navigation = () => {
               )}
             </button>
 
-            {/* Hamburger Menu */}
+
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle Menu"
@@ -146,7 +146,6 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
       <div
         className={`md:hidden transition-all duration-300 ease-in-out bg-white border-t border-gray-200 shadow-sm overflow-hidden ${
           isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
