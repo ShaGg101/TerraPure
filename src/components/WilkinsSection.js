@@ -54,7 +54,10 @@ const WilkinsSection = () => {
           
           <div className="text-center">
             <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <div className="text-6xl mb-4">💧</div>
+              <div className="relative mb-4 flex items-center justify-center group">
+                <div className="absolute w-16 h-16 bg-cyan-300 rounded-full opacity-50 scale-0 group-hover:scale-100 group-hover:animate-ping transition-transform duration-300"></div>
+                <div className="text-6xl relative z-10">💧</div>
+              </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Wilkins Distilled Water</h3>
               <p className="text-gray-600 mb-6">Pure. Safe. Trusted.</p>
               <div className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-4 rounded-lg">

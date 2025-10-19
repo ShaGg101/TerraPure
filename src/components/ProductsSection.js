@@ -1,5 +1,8 @@
 import React from 'react';
 import { useCart } from '../hooks/useCart';
+import delivery from '../images/delivery.png';
+import box from '../images/boxes.png';
+import sameday from '../images/same-day.png';
 
 const ProductsSection = () => {
   const { addToCart } = useCart();
@@ -37,11 +40,11 @@ const ProductsSection = () => {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    alert(`✅ Wilkins ${product.size} added to cart!\n\nClick the cart icon to view your items and checkout.`);
+    alert(`Wilkins ${product.size} added to cart!\n\nClick the cart icon to view your items and checkout.`);
   };
 
   const contactBulk = () => {
-    alert('📞 Bulk Order Contact:\n\nFor bulk orders and special pricing:\n\n📧 Email: bulk@terrapure.ph\n📱 Phone: (02) 8123-4567\n💬 WhatsApp: +63 917 123 4567\n\nOur team will contact you within 24 hours with a custom quote and delivery schedule.');
+    alert('Bulk Order Contact:\n\nFor bulk orders and special pricing:\n\n Email: bulk@terrapure.ph\n Phone: (02) 8123-4567\n WhatsApp: +63 917 123 4567\n\nOur team will contact you within 24 hours with a custom quote and delivery schedule.');
   };
 
   return (
@@ -62,7 +65,10 @@ const ProductsSection = () => {
               )}
               
               <div className="text-center mb-6">
-                <div className="text-6xl mb-4">💧</div>
+                <div className="relative mb-4 flex items-center justify-center">
+                  <div className="absolute w-16 h-16 bg-cyan-300 rounded-full opacity-50 animate-ping"></div>
+                  <div className="text-6xl relative z-10">💧</div>
+                </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Wilkins {product.size}</h3>
                 <p className="text-gray-600 text-sm">{product.description}</p>
               </div>
@@ -90,7 +96,6 @@ const ProductsSection = () => {
           ))}
         </div>
 
-        {/* Bulk Orders Section */}
         <div className="mt-16 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-2xl p-8">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Bulk Orders & Delivery</h3>
@@ -99,17 +104,17 @@ const ProductsSection = () => {
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-4xl mb-3">🚚</div>
+               <img src={delivery} alt="Free Delivery" className="w-16 h-16 mx-auto mb-3" />
               <h4 className="font-semibold text-gray-900 mb-2">Free Delivery</h4>
               <p className="text-gray-600 text-sm">Orders over ₱1,000 within Metro Manila</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">📦</div>
+              <img src={box} alt="Bulk Discounts" className="w-16 h-16 mx-auto mb-3" />
               <h4 className="font-semibold text-gray-900 mb-2">Bulk Discounts</h4>
               <p className="text-gray-600 text-sm">Save up to 15% on large orders</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl mb-3">⏰</div>
+              <div className="text-4xl mb-3"><img src={sameday} alt="Same Day Delivery" className="w-16 h-16 mx-auto mb-3" /></div>
               <h4 className="font-semibold text-gray-900 mb-2">Same Day Delivery</h4>
               <p className="text-gray-600 text-sm">Order before 2PM for same-day delivery</p>
             </div>

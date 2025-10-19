@@ -76,7 +76,6 @@ const ContactSection = () => {
             </div>
           </div>
         </div>
-        {/* Email form */}
         <div className="max-w-lg mx-auto bg-white p-6 rounded-xl shadow-md border border-gray-100">
           <h3 className="text-2xl font-bold text-gray-900 mb-2">Send Us Your Email</h3>
           <p className="text-gray-600 mb-4">Want updates or have questions? Enter your email and we'll reach out!</p>

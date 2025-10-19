@@ -9,7 +9,7 @@ const HeroSection = () => {
   };
 
   const startChallenge = () => {
-    alert('🎉 Welcome to the 7-Day Hydration Challenge!\n\nYour journey to better health starts now. We\'ll send you daily reminders and tips to help you reach your hydration goals.\n\nRemember: 8 glasses of Wilkins water daily for 7 days!\n\nLet\'s do this together! 💪');
+    alert('Welcome to the 7-Day Hydration Challenge!\n\nYour journey to better health starts now. We\'ll send you daily reminders and tips to help you reach your hydration goals.\n\nRemember: 8 glasses of Wilkins water daily for 7 days!\n\nLet\'s do this together!');
   };
 
   return (
@@ -43,15 +43,14 @@ const HeroSection = () => {
           <div className="relative">
             <div className="water-animation">
               <svg className="w-80 h-80 mx-auto purification-glow" viewBox="0 0 200 200" fill="none">
-                {/* Outer ripple circles */}
+
                 <circle cx="100" cy="100" r="90" fill="rgba(255,255,255,0.1)" className="ripple"/>
                 <circle cx="100" cy="100" r="80" fill="rgba(255,255,255,0.15)" className="ripple" style={{animationDelay: '0.5s'}}/>
                 <circle cx="100" cy="100" r="70" fill="rgba(255,255,255,0.2)" className="ripple" style={{animationDelay: '1s'}}/>
                 
-                {/* Main container circle */}
+ 
                 <circle cx="100" cy="100" r="60" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" strokeWidth="2"/>
                 
-                {/* 8 Step indicators around the circle */}
                 <circle cx="100" cy="40" r="4" fill="white" className="step-indicator"/>
                 <circle cx="142" cy="58" r="4" fill="white" className="step-indicator"/>
                 <circle cx="160" cy="100" r="4" fill="white" className="step-indicator"/>
@@ -61,7 +60,6 @@ const HeroSection = () => {
                 <circle cx="40" cy="100" r="4" fill="white" className="step-indicator"/>
                 <circle cx="58" cy="58" r="4" fill="white" className="step-indicator"/>
                 
-                {/* Water flow lines */}
                 <path 
                   d="M100 50 Q110 70, 100 90 Q90 110, 100 130 Q110 150, 100 170" 
                   stroke="rgba(255,255,255,0.6)" 
@@ -86,10 +84,10 @@ const HeroSection = () => {
                   style={{animationDelay: '2s'}}
                 />
                 
-                {/* Central water drop */}
+
                 <path d="M100 70 C115 85, 115 95, 100 110 C85 95, 85 85, 100 70 Z" fill="white" className="water-flow"/>
                 
-                {/* Purification particles */}
+
                 <circle cx="90" cy="80" r="1.5" fill="rgba(255,255,255,0.8)" className="step-indicator" style={{animationDelay: '0.5s'}}/>
                 <circle cx="110" cy="85" r="1" fill="rgba(255,255,255,0.7)" className="step-indicator" style={{animationDelay: '1.5s'}}/>
                 <circle cx="95" cy="105" r="1.5" fill="rgba(255,255,255,0.8)" className="step-indicator" style={{animationDelay: '2.5s'}}/>

@@ -1,19 +1,23 @@
 import React from 'react';
+import muscle from '../images/muscle.png';
+import brain from '../images/brain.png';
+import health from '../images/health.png';
+
 
 const BenefitsSection = () => {
   const benefits = [
     {
-      emoji: '🧠',
+      img: brain,
       title: 'Better Focus',
       description: 'Proper hydration improves concentration and mental clarity by up to 23%'
     },
     {
-      emoji: '💪',
+      img: muscle,
       title: 'Enhanced Energy',
       description: 'Stay energized throughout the day with optimal hydration levels'
     },
     {
-      emoji: '✨',
+      img: health,
       title: 'Healthier Skin',
       description: 'Pure water helps maintain skin elasticity and natural glow'
     }
@@ -37,7 +41,7 @@ const BenefitsSection = () => {
               key={index}
               className="text-center p-6 rounded-lg bg-gradient-to-b from-blue-50 to-cyan-50"
             >
-              <div className="text-4xl mb-4">{benefit.emoji}</div>
+              <div className="text-4xl mb-4"><img src={benefit.img} alt={benefit.title} className="w-16 h-16 mx-auto" /></div>
               <h3 className="text-xl font-semibold mb-3 text-gray-900">
                 {benefit.title}
               </h3>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useCart } from '../hooks/useCart';
 
 const CartModal = () => {
-  const { items, isOpen, removeFromCart, closeCart, getTotalPrice } = useCart();
+  const { items, isOpen, removeFromCart, closeCart, getTotalPrice, clearCart } = useCart();
 
   const checkout = () => {
     if (items.length === 0) return;
@@ -10,7 +10,9 @@ const CartModal = () => {
     const itemsList = items.map(item => `${item.quantity}x Wilkins ${item.size}`).join(', ');
     const total = getTotalPrice();
     
-    alert(`🛒 Checkout Summary:\n\nItems: ${itemsList}\nTotal: ₱${total}\n\n📝 This is a demo checkout. In a real store, you would proceed to payment and delivery options.\n\nThank you for choosing Wilkins!`);
+    alert(`Checkout Summary:\n\nItems: ${itemsList}\nTotal: ₱${total}\n\n This is a demo checkout. In a real store, you would proceed to payment and delivery options.\n\nThank you for choosing Wilkins!`);
+    clearCart();
+    closeCart();
   };
 
   if (!isOpen) return null;

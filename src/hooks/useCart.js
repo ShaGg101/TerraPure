@@ -36,6 +36,11 @@ const cartReducer = (state, action) => {
         ...state,
         isOpen: false
       };
+    case 'CLEAR_CART':
+      return {
+        ...state,
+        items: []
+      };
     default:
       return state;
   }
@@ -65,6 +70,10 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: 'CLOSE_CART' });
   };
 
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' });
+  };
+
   const getTotalItems = () => {
     return state.items.reduce((total, item) => total + item.quantity, 0);
   };
@@ -80,6 +89,7 @@ export const CartProvider = ({ children }) => {
     removeFromCart,
     toggleCart,
     closeCart,
+    clearCart,
     getTotalItems,
     getTotalPrice
   };

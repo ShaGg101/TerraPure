@@ -2,7 +2,7 @@ import React from 'react';
 
 const ChallengeSection = () => {
   const joinChallenge = () => {
-    alert('🌟 Congratulations on joining the 7-Day Hydration Challenge!\n\nHere\'s what happens next:\n\n✓ Track your daily water intake\n✓ Get motivational reminders\n✓ Share your progress with the community\n✓ Win prizes for completing the challenge\n\nStart tomorrow with your first glass of Wilkins water!\n\nGood luck! 🍀');
+    alert('Congratulations on joining the 7-Day Hydration Challenge!\n\nHere\'s what happens next:\n\n✓ Track your daily water intake\n✓ Get motivational reminders\n✓ Share your progress with the community\n✓ Win prizes for completing the challenge\n\nStart tomorrow with your first glass of Wilkins water!\n\nGood luck!');
   };
 
   const whatYouGet = [
