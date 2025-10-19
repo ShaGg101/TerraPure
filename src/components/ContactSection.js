@@ -132,7 +132,6 @@ A confirmation has been sent to:
 
 Next Steps:
    • Check your inbox for our welcome email
-   • Add hello@terrapure.ph to contacts
    • Watch for hydration tips and updates
    • Start your hydration journey with us
 
