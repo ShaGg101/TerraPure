@@ -124,19 +124,19 @@ const ContactSection = () => {
         setShowSuccessModal(false);
         setSubmitted(false);
       }}
-      title="✨ Welcome to TerraPure!"
-      message={`🎉 Thank you for connecting with us!
+      title="Welcome to TerraPure!"
+      message={`Thank you for connecting with us!
 
-📧 A confirmation has been sent to:
+A confirmation has been sent to:
    ${submittedEmail || 'your email'}
 
-📌 Next Steps:
+Next Steps:
    • Check your inbox for our welcome email
    • Add hello@terrapure.ph to contacts
    • Watch for hydration tips and updates
    • Start your hydration journey with us
 
-💧 Welcome to the TerraPure family!
+Welcome to the TerraPure family!
    Your path to better hydration begins now.`}
     />
     </>
