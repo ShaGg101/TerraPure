@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from './Modal';
 
 const ChallengeSection = () => {
+  const [showModal, setShowModal] = useState(false);
+
   const joinChallenge = () => {
-    alert('Congratulations on joining the 7-Day Hydration Challenge!\n\nHere\'s what happens next:\n\n✓ Track your daily water intake\n✓ Get motivational reminders\n✓ Share your progress with the community\n✓ Win prizes for completing the challenge\n\nStart tomorrow with your first glass of Wilkins water!\n\nGood luck!');
+    setShowModal(true);
   };
 
   const whatYouGet = [
@@ -74,6 +77,34 @@ const ChallengeSection = () => {
           Join Challenge Now - It's Free!
         </button>
       </div>
+      <Modal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        title="Welcome to the Challenge!"
+        message={`🎉  Congratulations on starting your wellness journey!
+
+�  Your 7-Day Challenge Details:
+
+    💧  Daily Goals:
+       •  Drink 8 glasses of water
+       •  Reach 2L daily target
+       •  Track your progress
+
+    🎯  Program Benefits:
+       •  ✨  Daily motivation tips
+       •  �  Reminder notifications
+       •  👥  Community support
+       •  🏆  Achievement badges
+
+    ⭐  Getting Started:
+       •  Begin tomorrow morning
+       •  Set regular reminders
+       •  Update progress daily
+
+💪  You've got this! Every drop counts towards a healthier you.
+
+🌟  Welcome to your hydration journey with Wilkins!`}
+      />
     </section>
   );
 };

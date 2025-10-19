@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './Modal';
 
 const ContactSection = () => {
   const getStartedItems = [
@@ -15,14 +16,18 @@ const ContactSection = () => {
 
   const [email, setEmail] = React.useState("");
   const [submitted, setSubmitted] = React.useState(false);
+  const [showErrorModal, setShowErrorModal] = React.useState(false);
+  const [showSuccessModal, setShowSuccessModal] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   if (!email) {
-    alert('Please enter your email address.');
-    return;
-  }
-  setSubmitted(false);
+    if (!email) {
+      setErrorMessage('Please enter your email address.');
+      setShowErrorModal(true);
+      return;
+    }
+    setSubmitted(false);
     try {
       const resp = await fetch('/api/send-email', {
         method: 'POST',
@@ -32,19 +37,22 @@ const ContactSection = () => {
       const data = await resp.json();
       if (resp.ok) {
         setSubmitted(true);
-        alert('Thank you! A confirmation email has been sent to ' + email);
+        setShowSuccessModal(true);
       } else {
         console.error(data);
-        alert('Failed to send email. Please try again later.');
+        setErrorMessage('Failed to send email. Please try again later.');
+        setShowErrorModal(true);
       }
     } catch (err) {
       console.error(err);
-      alert('Failed to send email. Please try again later.');
+      setErrorMessage('Failed to send email. Please try again later.');
+      setShowErrorModal(true);
     }
     setEmail('');
   };
 
   return (
+    <>
     <section id="contact" className="py-16 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -101,6 +109,19 @@ const ContactSection = () => {
         </div>
       </div>
     </section>
+    <Modal
+      isOpen={showErrorModal}
+      onClose={() => setShowErrorModal(false)}
+      title="Error"
+      message={errorMessage}
+    />
+    <Modal
+      isOpen={showSuccessModal}
+      onClose={() => setShowSuccessModal(false)}
+      title="Success"
+      message={`Thank you! A confirmation email has been sent to ${email}`}
+    />
+    </>
   );
 };
 

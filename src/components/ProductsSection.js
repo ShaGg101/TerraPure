@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useCart } from '../hooks/useCart';
+import Modal from './Modal';
 import delivery from '../images/delivery.png';
 import box from '../images/boxes.png';
 import sameday from '../images/same-day.png';
 
 const ProductsSection = () => {
   const { addToCart } = useCart();
+  const [showCartModal, setShowCartModal] = useState(false);
+  const [showBulkModal, setShowBulkModal] = useState(false);
+  const [addedProduct, setAddedProduct] = useState(null);
 
   const products = [
     {
@@ -40,11 +44,12 @@ const ProductsSection = () => {
 
   const handleAddToCart = (product) => {
     addToCart(product);
-    alert(`Wilkins ${product.size} added to cart!\n\nClick the cart icon to view your items and checkout.`);
+    setAddedProduct(product);
+    setShowCartModal(true);
   };
 
   const contactBulk = () => {
-    alert('Bulk Order Contact:\n\nFor bulk orders and special pricing:\n\n Email: bulk@terrapure.ph\n Phone: (02) 8123-4567\n WhatsApp: +63 917 123 4567\n\nOur team will contact you within 24 hours with a custom quote and delivery schedule.');
+    setShowBulkModal(true);
   };
 
   return (
@@ -130,6 +135,32 @@ const ProductsSection = () => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={showCartModal}
+        onClose={() => setShowCartModal(false)}
+        title="Added to Cart"
+        message={addedProduct ? `🛒 Wilkins ${addedProduct.size} added to cart!
+
+Click the shopping cart icon above to:
+✓ View your items
+✓ Adjust quantities
+✓ Proceed to checkout` : ''}
+      />
+      <Modal
+        isOpen={showBulkModal}
+        onClose={() => setShowBulkModal(false)}
+        title="Bulk Order Contact"
+        message={`📦 For Bulk Orders and Special Pricing:
+
+📧 Email: bulk@terrapure.ph
+📞 Phone: (02) 8123-4567
+📱 WhatsApp: +63 917 123 4567
+
+⏱️ Our team will contact you within 24 hours with:
+✓ Custom pricing quote
+✓ Delivery schedule
+✓ Special bulk discounts"
+      `}/>
     </section>
   );
 };

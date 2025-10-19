@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from './Modal';
 
 const HeroSection = () => {
+  const [showChallengeModal, setShowChallengeModal] = useState(false);
+
   const scrollToProducts = () => {
     const element = document.getElementById('products');
     if (element) {
@@ -9,7 +12,7 @@ const HeroSection = () => {
   };
 
   const startChallenge = () => {
-    alert('Welcome to the 7-Day Hydration Challenge!\n\nYour journey to better health starts now. We\'ll send you daily reminders and tips to help you reach your hydration goals.\n\nRemember: 8 glasses of Wilkins water daily for 7 days!\n\nLet\'s do this together!');
+    setShowChallengeModal(true);
   };
 
   return (
@@ -101,6 +104,34 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={showChallengeModal}
+        onClose={() => setShowChallengeModal(false)}
+        title="Welcome to the Challenge!"
+        message={`🎉  Congratulations on starting your wellness journey!
+
+�  Your 7-Day Challenge Details:
+
+    💧  Daily Goals:
+       •  Drink 8 glasses of water
+       •  Reach 2L daily target
+       •  Track your progress
+
+    🎯  Program Benefits:
+       •  ✨  Daily motivation tips
+       •  �  Reminder notifications
+       •  👥  Community support
+       •  🏆  Achievement badges
+
+    ⭐  Getting Started:
+       •  Begin tomorrow morning
+       •  Set regular reminders
+       •  Update progress daily
+
+💪  You've got this! Every drop counts towards a healthier you.
+
+🌟  Welcome to your hydration journey with Wilkins!`}
+      />
     </section>
   );
 };

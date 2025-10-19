@@ -1,16 +1,17 @@
 import React from 'react';
 import { useCart } from '../hooks/useCart';
+import Modal from './Modal';
 
 const CartModal = () => {
   const { items, isOpen, removeFromCart, closeCart, getTotalPrice, clearCart } = useCart();
+  const [showCheckoutModal, setShowCheckoutModal] = React.useState(false);
 
   const checkout = () => {
     if (items.length === 0) return;
-    
-    const itemsList = items.map(item => `${item.quantity}x Wilkins ${item.size}`).join(', ');
-    const total = getTotalPrice();
-    
-    alert(`Checkout Summary:\n\nItems: ${itemsList}\nTotal: ₱${total}\n\n This is a demo checkout. In a real store, you would proceed to payment and delivery options.\n\nThank you for choosing Wilkins!`);
+    setShowCheckoutModal(true);
+  };
+
+  const handleCheckoutConfirm = () => {
     clearCart();
     closeCart();
   };
@@ -18,6 +19,7 @@ const CartModal = () => {
   if (!isOpen) return null;
 
   return (
+    <>
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
       <div className="flex items-center justify-center min-h-screen p-4">
         <div className="bg-white rounded-2xl max-w-md w-full p-6">
@@ -76,6 +78,15 @@ const CartModal = () => {
         </div>
       </div>
     </div>
+    <Modal
+      isOpen={showCheckoutModal}
+      onClose={() => setShowCheckoutModal(false)}
+      title="Checkout Summary"
+      message={`Items: ${items.map(item => `${item.quantity}x Wilkins ${item.size}`).join(', ')}\nTotal: ₱${getTotalPrice()}\n\nThis is a demo checkout. In a real store, you would proceed to payment and delivery options.\n\nThank you for choosing Wilkins!`}
+      primaryAction={handleCheckoutConfirm}
+      primaryActionText="Complete Order"
+    />
+    </>
   );
 };
 
